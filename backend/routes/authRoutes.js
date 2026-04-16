@@ -36,7 +36,12 @@ router.post("/login",async (req,res)=>{
         if(!isMatch){
             return res.status(401).json({message:"Invalid password"})
         }
-        return res.status(200).json({message:"Login successful"})
+        const token=jwt.sign(
+            {id:user._id},
+            process.env.JWT_SECRET,
+            {expiresIn:"1d"}
+        )
+        return res.status(200).json({message:"Login successful",user,token})
     }
     catch(err){
         console.log("from login route",err)

@@ -12,6 +12,7 @@ export default function Login() {
             .then((res)=>{
                 if(res.status==200){
                     alert("Login successful")
+                    localStorage.setItem("token",res.data.token)
                     navigate("/")
                 }
             })
