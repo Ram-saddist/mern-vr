@@ -15,7 +15,7 @@ function Home() {
       const res = await API.get("/product");
       setProducts(res.data);
       console.log(res.data)
-      navigate("/cart")
+      
     } catch (err) {
       console.log(err);
     } finally {
